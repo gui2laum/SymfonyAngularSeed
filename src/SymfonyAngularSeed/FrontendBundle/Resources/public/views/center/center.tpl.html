@@ -1,0 +1,21 @@
+<script type="text/ng-template" id="control.tpl.html">
+    <select ng-model="zone" ng-change="controlChange()">
+        <option value="1">Montrouge</option>
+        <option value="2">La D&eacute;fense</option>
+    </select>
+</script>
+
+<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+    <ui-gmap-map-control template="control.tpl.html" position="RIGHT_BOTTOM" controller="controlCtrl" index="-1"></ui-gmap-map-control>
+    <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'" click="onClickToMarker">
+        <ui-gmap-windows show="show" templateUrl="'templateUrl'" templateParameter="'templateParameter'" ng-cloak>
+            <div>
+                <ul>
+                    <li ng-non-bindable><i>{{ info_content }}</i></li>
+                    <li ng-non-bindable>marker n&deg;{{ info_content }}</li>
+                    <li><a ui-sref="poi({id: '{{ activeMarker }}' })">Fiche</a></li>
+                </ul>
+            </div>
+        </ui-gmap-windows>
+    </ui-gmap-markers>
+</ui-gmap-google-map>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr" ng-app="symfonyAngularSeedApp">
+	<head>
+  		<meta charset="utf-8">
+  		<title>Diag&amp;Drop</title>
+		{#   <link rel="stylesheet" href="{{ asset('bundles/frontend/css/app.css') }}"/>#}
+		<style media="screen" type="text/css">
+			.angular-google-map-container { position: absolute; top: 0; bottom: 0; right: 0; left: 0; }
+		</style>
+	</head>
+	<body ng-controller="AppController">
+  		<div ui-view=""></div>
+
+  		<div>v<span app-version></span></div>
+
+  		<!-- In production use:
+  		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+  		-->
+
+		<!-- Vendor -->
+		<script src="{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular/angular.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/lodash/lodash.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular-cookies/angular-cookies.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular-resource/angular-resource.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular-animate/angular-animate.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular-bootstrap/ui-bootstrap.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular-ui-router/release/angular-ui-router.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/restangular/dist/restangular.js') }}"></script>
+  		<script src="{{ asset('assets/vendor/angular-google-maps/dist/angular-google-maps.js') }}"></script>
+  
+  		<!-- App -->
+  		<script src="{{ asset('bundles/frontend/scripts/common/app.js') }}"></script>
+  		
+  		<!-- Pages -->
+  		<script src="{{ asset('bundles/frontend/scripts/home/home.ctrl.js') }}"></script>
+  		<script src="{{ asset('bundles/frontend/scripts/home/home.mdl.js') }}"></script>
+  		
+  		<script src="{{ asset('bundles/frontend/scripts/center/center.ctrl.js') }}"></script>
+  		<script src="{{ asset('bundles/frontend/scripts/center/center.mdl.js') }}"></script>
+  		
+  		<script src="{{ asset('bundles/frontend/scripts/poi/poi.ctrl.js') }}"></script>
+  		<script src="{{ asset('bundles/frontend/scripts/poi/poi.mdl.js') }}"></script>
+	</body>
+</html>
