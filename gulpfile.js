@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     usemin = require('gulp-usemin'),
     uglify = require('gulp-uglify'),
     minifyHtml = require('gulp-minify-html'),
+
     ngmin = require('gulp-ng-annotate'),
     connect = require('gulp-connect'),
     proxy = require('proxy-middleware'),
@@ -19,6 +20,7 @@ var gulp = require('gulp'),
 var webRoot = 'web/',
     folders = {
         resource : 'src/SymfonyAngularSeed/FrontendBundle/Resources/web/',
+        index: 'src/SymfonyAngularSeed/FrontendBundle/Resources/views/Default/index.html.twig',
 	    tmp : webRoot + '.tmp/',
         node : 'node_modules/',
         symfony_vendor : 'vendor/',
@@ -83,13 +85,26 @@ gulp.task('lib:dev', [ 'clean:lib' ], function() {
         .pipe(gulp.dest(webRoot));
 });
 
+// TODO : make the build to prod
+gulp.task('usemin', [ 'clean:resource', 'clean:lib' ], function() {
+    /*return gulp.src(folders.index).pipe(usemin({
+        html : [ minifyHtml({
+            empty : true,
+            conditionals : true,
+            spare : true,
+            quotes : true
+        })],
+        js_vendor : [ 'concat' ],
+        js : [ ngmin(), uglify(), 'concat' ]
+    })).pipe(gulp.dest(folders.dist));*/
+});
+
 gulp.task('bower', [ 'clean:bower'], function() {
 	return bower();
 });
 
 // High level tasks
-// TODO : make the build to prod
-gulp.task('build', []);
+gulp.task('build', [ 'usemin' ]);
 gulp.task('build:dev', [ 'resources:dev', 'lib:dev' ]);
 gulp.task('install', [ 'bower' ]);
 gulp.task('clean:all', [ 'clean:lib', 'clean:resource', 'clean:install', 'clean:node', 'clean:symfony' ]);
