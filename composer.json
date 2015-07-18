@@ -21,6 +21,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/rest-bundle": "^1.7",
         "jms/serializer-bundle": "^1.0",
+        "mouf/nodejs-installer": "~1.0",
         "yohang/dependency-tools": "1.1.*"
     },
     "require-dev": {
@@ -60,6 +61,14 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
+        },
+        "mouf": {
+            "nodejs": {
+                "version": "~0.12",
+                "targetDir": "vendor/nodejs/nodejs/",
+                "forceLocal": true,
+                "includeBinInPath": true
+            }
         },
         "dependency-tools": {
             "npm": true,

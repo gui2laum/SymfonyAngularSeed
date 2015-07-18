@@ -8,7 +8,7 @@ angular.module('symfonyAngularSeedApp').controller('CenterCtrl', [ '$scope', '$h
 	$scope.map = { center: { latitude: $scope.latitude, longitude: $scope.longitude }, zoom: parseInt($scope.zoom), bounds: {} };
 	$scope.options = { scrollwheel: false };
 	$scope.activeMarker = 0;
-	
+
     var createRandomMarker = function (i, bounds, idKey) {
         var lat_min = bounds.southwest.latitude,
             lat_range = bounds.northeast.latitude - lat_min,
@@ -28,9 +28,9 @@ angular.module('symfonyAngularSeedApp').controller('CenterCtrl', [ '$scope', '$h
             show: false,
             info_content: i,
         };
-        
+
         ret[idKey] = i;
-        
+
         ret.onClickToMarker = function() {
             ret.show = !ret.show;
             $scope.activeMarker = ret[idKey];
@@ -51,14 +51,14 @@ angular.module('symfonyAngularSeedApp').controller('CenterCtrl', [ '$scope', '$h
     }, true);
 
 	uiGmapGoogleMapApi.then(function(maps) {
-		
+
     });
 }]).controller('controlCtrl', [ '$scope', '$state', '$log', function ($scope, $state, $log) {
     $scope.controlChange = function () {
-    	$log.log($scope.zone);
+    	//$log.log($scope.zone);
         $scope.go($scope.zone);
     };
-    
+
     $scope.go = function(id) {
 		switch(id) {
 		case "1":
