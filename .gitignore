@@ -17,5 +17,5 @@
 target
 .factorypath
 .buildpath
-\node_modules
-\web\assets\vendor
+/node_modules
+/web/assets/vendor

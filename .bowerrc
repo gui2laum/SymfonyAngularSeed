@@ -1,3 +1,3 @@
 {
-	  "directory": "web/assets/vendor/"
+	  "directory": "src/SymfonyAngularSeed/FrontendBundle/Resources/public/lib/"
 }
