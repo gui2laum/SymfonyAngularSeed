@@ -3,10 +3,7 @@
 	<head>
   		<meta charset="utf-8">
   		<title>SymfonyAngularSeed</title>
-		{#   <link rel="stylesheet" href="{{ asset('bundles/frontend/css/app.css') }}"/>#}
-		<style media="screen" type="text/css">
-			.angular-google-map-container { position: absolute; top: 0; bottom: 0; right: 0; left: 0; }
-		</style>
+		<link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 	</head>
 	<body ng-controller="AppController">
   		<div ui-view=""></div>

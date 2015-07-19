@@ -113,11 +113,14 @@ gulp.task('lib:dev', [ 'clean:lib' ], function() {
 
 gulp.task('index:dev', [ 'clean:index' ], function() {
 	return gulp.src(folders.index + files.index + '.dist')
+        .pipe(replace(/<script data-usemin=\"js_vendor\" src=\"([0-9a-zA-Z\-_\s\.\/]*)\"><\/script>/g,
+            '<script src="{{ asset(\'$1\') }}"></script>'))
+        .pipe(replace(/<script data-usemin=\"js_app\" src=\"([0-9a-zA-Z\-_\s\.\/]*)\"><\/script>/g,
+            '<script src="{{ asset(\'$1\') }}"></script>'))
         .pipe(rename(files.index))
         .pipe(gulp.dest(folders.index));
 });
 
-// TODO : make the build to prod
 gulp.task('usemin:index', [ 'clean:tmp:usemin' ], function() {
     return gulp.src(folders.index + files.index + '.dist')
         .pipe(replace(/<script data-usemin=\"js_vendor\" src=\"([0-9a-zA-Z\-_\s\.\/]*)\.js\"><\/script>/g,
@@ -158,6 +161,8 @@ gulp.task('resources', [ 'usemin', 'resources:others', 'clean:resource', 'clean:
         ], { base : folders.tmp }).pipe(gulp.dest(webRoot));
 
     var stream2 = gulp.src(folders.tmp + files.index + '.dist')
+        .pipe(replace(/<script src=\"([0-9a-zA-Z\-_\s\.\/]*)\"><\/script>/g,
+            '<script src="{{ asset(\'$1\') }}"></script>'))
         .pipe(rename(files.index))
         .pipe(gulp.dest(folders.index));
 
