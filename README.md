@@ -16,3 +16,9 @@ Usage :
     [5] - bin/node node_modules/gulp/bin/gulp.js build:dev (build frontend application)
     [6] - php app/console server:run (run application)
     [7] - bin/node node_modules/gulp/bin/gulp.js watch (livereload)
+
+ TODO :
+  - CSS minify, etc.
+  - images
+  - HTML minify, etc.
+  - task to deploy
