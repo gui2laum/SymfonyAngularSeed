@@ -6,7 +6,7 @@ A Symfony Angular Seed project created on July 16, 2015, 9:43 am.
 Required :
     - PHP >= 5.4 (CLI)
     - Composer (https://getcomposer.org/)
-
+    - git
 
 Usage :
     [1] - git clone

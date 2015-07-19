@@ -1,10 +1,11 @@
-'use strict';
+"use strict";
 
 var gulp = require('gulp'),
     vinylPaths = require('vinyl-paths'),
     del = require('del'),
     bower = require('gulp-bower'),
     livereload = require('gulp-livereload'),
+    rename = require('gulp-rename'),
 
     minifyCss = require('gulp-minify-css'),
     usemin = require('gulp-usemin'),
@@ -20,7 +21,7 @@ var gulp = require('gulp'),
 var webRoot = 'web/',
     folders = {
         resource : 'src/SymfonyAngularSeed/FrontendBundle/Resources/web/',
-        index: 'src/SymfonyAngularSeed/FrontendBundle/Resources/views/Default/index.html.twig',
+        index :  'src/SymfonyAngularSeed/FrontendBundle/Resources/views/Default/',
 	    tmp : webRoot + '.tmp/',
         node : 'node_modules/',
         symfony_vendor : 'vendor/',
@@ -30,6 +31,9 @@ var webRoot = 'web/',
         images : 'images/',
         scripts : 'scripts/',
         views : 'views/'
+    },
+    files = {
+        index: 'index.html.twig'
     };
 
 // Clean Tasks
@@ -70,6 +74,11 @@ gulp.task('clean:symfony', function() {
         .pipe(vinylPaths(del));
 });
 
+gulp.task('clean:index', function() {
+	return gulp.src(folders.index + files.index, { read : false })
+        .pipe(vinylPaths(del));
+});
+
 // Tasks
 gulp.task('resources:dev', [ 'clean:resource' ], function() {
 	return gulp.src([
@@ -85,18 +94,25 @@ gulp.task('lib:dev', [ 'clean:lib' ], function() {
         .pipe(gulp.dest(webRoot));
 });
 
+gulp.task('index:dev', [ 'clean:index' ], function() {
+	return gulp.src(folders.index + files.index + '.dist')
+        .pipe(rename(files.index))
+        .pipe(gulp.dest(folders.index));
+});
+
 // TODO : make the build to prod
-gulp.task('usemin', [ 'clean:resource', 'clean:lib' ], function() {
-    /*return gulp.src(folders.index).pipe(usemin({
-        html : [ minifyHtml({
-            empty : true,
-            conditionals : true,
-            spare : true,
-            quotes : true
-        })],
-        js_vendor : [ 'concat' ],
-        js : [ ngmin(), uglify(), 'concat' ]
-    })).pipe(gulp.dest(folders.dist));*/
+gulp.task('usemin', [ 'clean:resource', 'clean:lib', 'clean:index' ], function() {
+    return gulp.src(folders.index + files.index + '.dist').pipe(usemin({
+            // html : [ minifyHtml({
+            //     empty : true,
+            //     conditionals : true,
+            //     spare : true,
+            //     quotes : true
+            // })],
+            js_vendor : [ 'concat' ],
+            //js : [ ngmin(), uglify(), 'concat' ]
+        })).pipe(rename(files.index))
+        .pipe(gulp.dest(folders.index));
 });
 
 gulp.task('bower', [ 'clean:bower'], function() {
@@ -105,9 +121,9 @@ gulp.task('bower', [ 'clean:bower'], function() {
 
 // High level tasks
 gulp.task('build', [ 'usemin' ]);
-gulp.task('build:dev', [ 'resources:dev', 'lib:dev' ]);
+gulp.task('build:dev', [ 'resources:dev', 'lib:dev', 'index:dev' ]);
 gulp.task('install', [ 'bower' ]);
-gulp.task('clean:all', [ 'clean:lib', 'clean:resource', 'clean:install', 'clean:node', 'clean:symfony' ]);
+gulp.task('clean:all', [ 'clean:lib', 'clean:resource', 'clean:install', 'clean:node', 'clean:symfony', 'clean:index' ]);
 
 // LiveReload
 gulp.task('watch', function () {

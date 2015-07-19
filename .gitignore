@@ -19,6 +19,7 @@ target
 .buildpath
 /node_modules
 /src/SymfonyAngularSeed/FrontendBundle/Resources/web/lib/*
+/src/SymfonyAngularSeed/FrontendBundle/Resources/views/Default/index.html.twig
 /web/lib
 /web/css
 /web/images
