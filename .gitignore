@@ -25,3 +25,4 @@ target
 /web/images
 /web/scripts
 /web/views
+/web/.tmp

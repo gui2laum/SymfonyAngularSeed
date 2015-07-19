@@ -14,31 +14,31 @@
   		<div>v<span app-version></span></div>
 
 		<!-- build:js_vendor scripts/lib.js -->
-		<script src="{{ asset('lib/jquery/dist/jquery.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular/angular.min.js') }}"></script>
-  		<script src="{{ asset('lib/lodash/lodash.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular-cookies/angular-cookies.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular-resource/angular-resource.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular-animate/angular-animate.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular-ui-router/release/angular-ui-router.min.js') }}"></script>
-  		<script src="{{ asset('lib/restangular/dist/restangular.min.js') }}"></script>
-  		<script src="{{ asset('lib/angular-google-maps/dist/angular-google-maps.min.js') }}"></script>
+		<script data-usemin="js_vendor" src="lib/jquery/dist/jquery.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular/angular.js"></script>
+  		<script data-usemin="js_vendor" src="lib/lodash/lodash.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular-cookies/angular-cookies.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular-resource/angular-resource.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular-animate/angular-animate.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  		<script data-usemin="js_vendor" src="lib/restangular/dist/restangular.js"></script>
+  		<script data-usemin="js_vendor" src="lib/angular-google-maps/dist/angular-google-maps.js"></script>
 		<!-- endbuild -->
 
 		<!-- build:js_app scripts/app.js -->
 		<!-- App -->
-  		<script src="{{ asset('scripts/common/app.js') }}"></script>
+  		<script data-usemin="js_app" src="scripts/common/app.js"></script>
 
   		<!-- Pages -->
-  		<script src="{{ asset('scripts/home/home.ctrl.js') }}"></script>
-  		<script src="{{ asset('scripts/home/home.mdl.js') }}"></script>
+  		<script data-usemin="js_app" src="scripts/home/home.ctrl.js"></script>
+  		<script data-usemin="js_app" src="scripts/home/home.mdl.js"></script>
 
-  		<script src="{{ asset('scripts/center/center.ctrl.js') }}"></script>
-  		<script src="{{ asset('scripts/center/center.mdl.js') }}"></script>
+  		<script data-usemin="js_app" src="scripts/center/center.ctrl.js"></script>
+  		<script data-usemin="js_app" src="scripts/center/center.mdl.js"></script>
 
-  		<script src="{{ asset('scripts/poi/poi.ctrl.js') }}"></script>
-  		<script src="{{ asset('scripts/poi/poi.mdl.js') }}"></script>
+  		<script data-usemin="js_app" src="scripts/poi/poi.ctrl.js"></script>
+  		<script data-usemin="js_app" src="scripts/poi/poi.mdl.js"></script>
 		<!-- endbuild -->
 
 		{% if app.environment == 'dev' %}
